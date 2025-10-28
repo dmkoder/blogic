@@ -1,0 +1,45 @@
+/* CSS Variables */
+:root {
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-w1: #fffff8;
+  --color-w2: #fffff6;
+  --color-w3: #fffff5;
+  --color-w4: #fffff3;
+  --color-w5: #fffff2;
+  
+  --color-b1: #85857f;
+  --color-b2: #696963;
+  --color-b3: #4e4e4a;
+  --color-b4: #353533;
+  --color-b5: #1e1e1d;
+
+  --color-t1: #60c3aa;
+  --color-t2: #56ab95;
+  --color-t3: #4c9481;
+  --color-t4: #427d6e;
+  --color-t5: #38685b;
+
+  --color-r1: #f16d6e;
+  --color-r2: #d36362;
+  --color-r3: #b75656;
+  --color-r4: #9b4a49;
+  --color-r5: #7f3f3e;
+
+  --color-o1: #fec656;
+  --color-o2: #dfaf4f;
+  --color-o3: #c09745;
+  --color-o4: #a2803c;
+  --color-o5: #856933;
+
+  --color-b1: #0d3b66;
+  --color-b2: #10365c;
+  --color-b3: #123051;
+  --color-b4: #122a45;
+  --color-b5: #12243a;
+} 
+
+
+
+
