@@ -1,10 +1,10 @@
 ---
 title: Support
-menu:
-    main: 
-        weight: 5
-        params:
-            icon: link
+#menu:
+#    main: 
+#        weight: -1
+#        params:
+#            icon: link
 
 comments: false
 license: false
