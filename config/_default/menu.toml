@@ -18,7 +18,7 @@ icon = "brand-github"
 [[social]]
 identifier = "mastodon"
 name = "Mastodon"
-url = "https://mastodon.social/@yourusername"
+url = "https://mastodon.social/@blogicink"
 
 [social.params]
 icon = "brand-mastodon"
