@@ -10,4 +10,5 @@ menu:
         weight: 4
         params: 
             icon: search
+exclude_from_rss: true
 ---

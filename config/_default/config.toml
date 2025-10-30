@@ -16,3 +16,7 @@ hasCJKLanguage = false
 
 [pagination]
 pagerSize = 5
+
+[params.author]
+email = "markovic@djordje.rs"
+name = "Đorđe Marković"

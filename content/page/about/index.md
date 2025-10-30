@@ -13,6 +13,7 @@ menu:
 description: bLogic.ink - Ink and Think!
 comments: false
 license: false
+exclude_from_rss: true
 ---
 
 

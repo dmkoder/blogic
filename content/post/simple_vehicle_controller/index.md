@@ -8,7 +8,8 @@ image: undraw_drone.svg
 categories:
     - Application
 tags:
-    - Temporal
+    - Dynamic system
+    - Temporal logic
     - Verification
 ---
 
