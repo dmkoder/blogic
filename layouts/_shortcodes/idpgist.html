@@ -1,0 +1,21 @@
+{{/* Mark that this shortcode was used */}}
+{{ .Page.Scratch.Set "idpGistUsed" true }}
+
+<p class="code-header">
+    <span class="filename">
+        {{ index .Params 3 }}
+        <!-- <a  href="" target="_blank">Try</a> -->
+    </span>
+</p>
+<pre class="code-body"><code class="idp3" id='{{ replace (index .Params 3) " " "_" }}'></code></pre>
+{{if len .Params | eq 5 }}
+    <p class="code-footer"><b>Author:</b> <i>{{ index .Params 4 }}</i></p>
+{{end}}
+
+<script>
+  fetchCode("{{ index .Params 0 }}", "{{ index .Params 1 }}", "{{ index .Params 2 }}", "{{ index .Params 3 }}");
+</script>
+
+
+
+

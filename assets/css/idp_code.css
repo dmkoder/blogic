@@ -1,0 +1,65 @@
+/* Code */
+code.hljs{
+  font-family: monospace;
+  padding: 0px !important;
+}
+
+/* Highlighting colors */
+.hljs-string,
+.hljs-section,
+.hljs-selector-class,
+.hljs-template-variable,
+.hljs-deletion {
+  color: #b75656;
+}
+
+.hljs-comment{
+  color: #56ab95;
+  font-style: italic;
+}
+
+.hljs-keyword{
+  color: #c09745;
+}
+
+.hljs-bracket{
+  color: #b75656;
+}
+
+.hljs-vockeyword { color: #b75656 }
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  
+}
+
+/* Code block elements (Header, Body, and Footer) */
+.code-header{
+  margin-bottom: 0px !important;
+  margin-left: calc((var(--card-padding)) * -1) !important;
+  margin-right: calc((var(--card-padding)) * -1) !important;
+  width: calc(100% + var(--card-padding) * 2) !important;
+  background-color: var(--blockquote-background-color);
+  padding: 5px;
+  padding-left: var(--card-padding) !important;
+  padding-right: var(--card-padding) !important;
+  font-weight: bold;
+}
+
+.code-body{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.code-footer{
+  margin-top: 0px !important;
+  margin-left: calc((var(--card-padding)) * -1) !important;
+  margin-right: calc((var(--card-padding)) * -1) !important;
+  width: calc(100% + var(--card-padding) * 2) !important;
+  background-color: var(--blockquote-background-color);
+  padding: 5px;
+  padding-left: var(--card-padding) !important;
+  padding-right: var(--card-padding) !important;
+}

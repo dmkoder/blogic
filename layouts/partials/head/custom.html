@@ -1,0 +1,16 @@
+{{/* Load assets if indgist is used in the page */}}
+{{ if .Page.Scratch.Get "idpGistUsed" }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+    {{ with resources.Get "css/idp_code.css" | minify | fingerprint }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}">
+    {{ end }}
+
+    {{ with resources.Get "js/idp_code.js" | minify | fingerprint }}
+        <script src="{{ .RelPermalink }}"></script>   
+    {{ end }}
+{{ end }}
+
+
+ 

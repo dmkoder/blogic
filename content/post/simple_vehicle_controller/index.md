@@ -114,7 +114,8 @@ Note that windSpeed, vehiclePos, vehicleSpeed, and windChange are all represente
 
 In the following code you can find the sketched knowledge base.
 
-{{< gist dmkoder 6c39aa5768a9fb3305745f7f999285f4 Simple_vehicle_controller-Formalization.idp >}}
+{{< idpgist dmkoder 6c39aa5768a9fb3305745f7f999285f4 3cdfc019eafe9307929355cb5aae547822a9898f
+Simple_vehicle_controller-Formalization.idp `Đorđe Marković` >}}
  
 
 
@@ -126,7 +127,8 @@ While formalizing our system we can use simulation to check whether our system b
 Here we provide a `simulate` method, which takes a theory and a structure as an input.
 Basic idea is to take a set of possible actions at the given moment and ask the user to select one of the states to be propagated. Looping over this process is actually a simulation of the dynamic system. In this particular case at each time point there is only one parameter to be selected by the user, and that is wind change.
 
-{{< gist dmkoder 6c39aa5768a9fb3305745f7f999285f4 Simple_vehicle_controller-Simulation.idp >}}
+{{< idpgist dmkoder 6c39aa5768a9fb3305745f7f999285f4 3cdfc019eafe9307929355cb5aae547822a9898f
+Simple_vehicle_controller-Simulation.idp `Đorđe Marković` >}}
 
 For more information about the particular methods of the IDP system please check the (IDP manual, 2020)[^4]. For more details on reasoning in linear time calculus check (Bogaerts, 2014)[^3].
 
@@ -140,8 +142,8 @@ The IDP3 system provides an automated way of proving invariants for linear time 
 
 Here we provide that the initial state is (0,0,0) and we attempt to prove the invariant that says that the system is always in a good state. We also provide structures interpreting the given types.
 
-{{< gist dmkoder 6c39aa5768a9fb3305745f7f999285f4 
-Simple_vehicle_controller-Theorem-1.idp >}}
+{{< idpgist dmkoder 6c39aa5768a9fb3305745f7f999285f4 3cdfc019eafe9307929355cb5aae547822a9898f
+Simple_vehicle_controller-Theorem-1.idp `Đorđe Marković` >}}
 
 Due to the arithmetics used in the theory, the theorem prover used in IDP3 will fail to prove the invariant of this theory. Unfortunately in this particular case, due to the very large search space, the method based on model expansion will most likely run out of resources and never finish.
 
@@ -165,8 +167,9 @@ For the base case, we describe the system as it is initially, so we drop all the
 
 Note that we do not need time anymore, since our theory is now only about one single state. So, we replace the functions describing the systems with adequate constants.
 
-{{< gist dmkoder 2a1c564c7a3eba07b5b54f2ed3799e9a 
-Simple_vehicle_controller-Theorem_1-Base_case.idpz3 >}}
+{{< idpgist dmkoder 2a1c564c7a3eba07b5b54f2ed3799e9a 38261a83feb3f620a11dbc5946d6e00fb4ed83cf
+Simple_vehicle_controller-Theorem_1-Base_case.idpz3 `Đorđe Marković` >}}
+
 
 Obviously, the theory about the base case is unsatisfiable.
 
@@ -178,8 +181,8 @@ In the induction case, we specify the system in two consecutive time points (we 
 In the induction case we simply prove that whenever the system is in a good state, it will also be in a good state after a step is made.
 \[\forall t : GS(vehiclePos(t), windSpeed(t) + vehicleSpeed(t)) \Rightarrow GS(vehiclePos(t+1), windSpeed(t+1) + vehicleSpeed(t+1))\] 
 
-{{< gist dmkoder 2a1c564c7a3eba07b5b54f2ed3799e9a 
-Simple_vehicle_controller-Theorem_1-Induction_case.idpz3 >}}
+{{< idpgist dmkoder 2a1c564c7a3eba07b5b54f2ed3799e9a 38261a83feb3f620a11dbc5946d6e00fb4ed83cf
+Simple_vehicle_controller-Theorem_1-Induction_case.idpz3 `Đorđe Marković` >}}
 
 Here IDPz3 proves that the above theory is unsatisfiable.
 
@@ -193,14 +196,14 @@ The second theorem is also simplified using the notion of a good state. First, w
 First, we define transitions between five consecutive time points (indexed with 0..4). 
 Next, we express the assumptions that the system is initially in a good state and that wind never changes. Now we want to prove that, at the last time point, the system is in the good state (0,0). This is a stronger result than we normally need, we just need to prove that the vehicle is at position 0. But we prove the stronger theorem since we will need it later to prove that the vehicle remains at the same position. We use the same idea as before and try to find a counterexample of the described theory (that is why the final result is negated in the theory).
     
-{{< gist dmkoder 2a1c564c7a3eba07b5b54f2ed3799e9a 
-Simple_vehicle_controller-Theorem_2-Back_to_the_course.idpz3 >}}
+{{< idpgist dmkoder 2a1c564c7a3eba07b5b54f2ed3799e9a 38261a83feb3f620a11dbc5946d6e00fb4ed83cf
+Simple_vehicle_controller-Theorem_2-Back_to_the_course.idpz3 `Đorđe Marković` >}}
 
 #### Vehicle remains at the course
 In order to prove that the vehicle remains at the course as long as the wind is constant, we are going to use induction. Basically, we want to prove that if the system is in a good state (0,0) it will remain at that state as long as the wind does not change. In order to create a single state formula (invariant) that we want to prove we move the if part (when the system is in a good state (0,0)) to the theory. By doing this we obtain the invariant: "system is always in a good state (0,0)". It is trivial that this invariant is initially satisfied so we move directly to the induction case.
 
-{{< gist dmkoder 2a1c564c7a3eba07b5b54f2ed3799e9a 
-Simple_vehicle_controller-Theorem_2-Remain_at_the_course.idpz3 >}}
+{{< idpgist dmkoder 2a1c564c7a3eba07b5b54f2ed3799e9a 38261a83feb3f620a11dbc5946d6e00fb4ed83cf
+Simple_vehicle_controller-Theorem_2-Remain_at_the_course.idpz3 `Đorđe Marković` >}}
 
 ## Conclusion
 
