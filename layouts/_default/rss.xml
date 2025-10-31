@@ -42,8 +42,8 @@
         <description>
             {{- $image := partial "helper/image" (dict "Context" . "Type" "rss") -}}
             {{- if $image.exists -}}
-                {{ "<" | html }}img src="{{ $image.permalink | absURL }}" alt="Featured image of post {{ .Title }}" {{ "/>" | html}}
-            {{- end -}}{{ $content }}</description>
+                {{ "<" | html }}img src="{{ $image.permalink | replaceRE `\.svg$` ".png" | absURL }}" alt="Featured image of post {{ .Title }}" {{ "/>" | html}}
+            {{- end -}}{{ $content }} <a href="{{ .Permalink }}"> Source</a></description>
         </item>
         {{ end }}
     </channel>
