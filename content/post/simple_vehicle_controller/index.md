@@ -4,7 +4,7 @@ description: Đorđe Marković, Bart Bogaerts
 slug: simple-vehicle-controller
 date: 2025-10-29 00:00:00+0000
 math: true
-image: undraw_drone.svg
+image: undraw_drone.png
 categories:
     - Application
 tags:
