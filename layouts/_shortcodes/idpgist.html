@@ -1,16 +1,23 @@
 {{/* Mark that this shortcode was used */}}
 {{ .Page.Scratch.Set "idpGistUsed" true }}
 
-<p class="code-header">
+<p class="idp-code-header">
     <span class="filename">
         {{ index .Params 3 }}
-        <!-- <a  href="" target="_blank">Try</a> -->
     </span>
 </p>
-<pre class="code-body"><code class="idp3" id='{{ replace (index .Params 3) " " "_" }}'></code></pre>
-{{if len .Params | eq 5 }}
-    <p class="code-footer"><b>Author:</b> <i>{{ index .Params 4 }}</i></p>
-{{end}}
+<div class="idp-code-wrapper" style="position:relative;">
+  {{if len .Params | eq 6 }}
+    <a class="idp-run-button" href="{{ index .Params 5 }}" title="Open this snippet" target="_blank" rel="noopener">
+      {{ ":rocket:" | $.Page.RenderString }}
+      <span class="idp-run-button-text">&nbsp; Try Online!</span>
+    </a>
+  {{end}}
+  <pre class="idp-code-body"><code class="idp3" id='{{ replace (index .Params 3) " " "_" }}'></code></pre>
+</div>
+
+<p class="idp-code-footer"><b>Author:</b> <i>{{ index .Params 4 }}</i></p>
+
 
 <script>
   fetchCode("{{ index .Params 0 }}", "{{ index .Params 1 }}", "{{ index .Params 2 }}", "{{ index .Params 3 }}");

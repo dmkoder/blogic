@@ -1,3 +1,7 @@
+pre.idp-code-body{
+  background-color: var(--code-background-color) !important;
+}
+
 /* Code */
 code.hljs{
   font-family: monospace;
@@ -32,11 +36,10 @@ code.hljs{
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  
 }
 
 /* Code block elements (Header, Body, and Footer) */
-.code-header{
+.idp-code-header{
   margin-bottom: 0px !important;
   margin-left: calc((var(--card-padding)) * -1) !important;
   margin-right: calc((var(--card-padding)) * -1) !important;
@@ -48,12 +51,12 @@ code.hljs{
   font-weight: bold;
 }
 
-.code-body{
+.idp-code-body{
   margin-top: 0px;
   margin-bottom: 0px;
 }
 
-.code-footer{
+.idp-code-footer{
   margin-top: 0px !important;
   margin-left: calc((var(--card-padding)) * -1) !important;
   margin-right: calc((var(--card-padding)) * -1) !important;
@@ -62,4 +65,43 @@ code.hljs{
   padding: 5px;
   padding-left: var(--card-padding) !important;
   padding-right: var(--card-padding) !important;
+}
+
+/* Container – nothing special beyond relative positioning */
+.code-wrapper {
+  margin: 0px
+}
+
+/* Button styling */
+.idp-run-button {
+  position: absolute;
+  top: var(--card-padding);
+  right: 0px;
+  background: var(--blockquote-background-color);
+  border-radius: 4px;
+  padding: 0.2rem 0.6rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  display: inline-flex;  
+}
+
+/* Hover effect */
+.idp-run-button:hover {
+  opacity: 1;
+}
+
+/* HIDDEN text – shown only on hover */
+.idp-run-button-text {
+    opacity: 0;
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: opacity 0.2s ease,
+                max-width 0.2s ease;
+}
+
+/* Reveal the text when the parent <a> is hovered */
+.idp-run-button:hover .idp-run-button-text {
+    opacity: 1;
+    max-width: 10rem;
 }

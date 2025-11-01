@@ -14,6 +14,8 @@ hasCJKLanguage = false
 # Change it to your Disqus shortname before using
 #disqusShortname = "hugo-theme-stack"
 
+enableEmoji = true
+
 [pagination]
 pagerSize = 5
 
