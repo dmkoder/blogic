@@ -13,13 +13,11 @@ tags:
     - Verification
 ---
 
-## Introduction
-
-The purpose of this document is to demonstrate how knowledge representation systems based on first-order logic could be used to solve real-life problems. To do so, we model a simple autonomous vehicle controller that takes care of wind changes and keeps the vehicle on the course. This kind of controller one can usually find in autonomous pilot systems (E.g. drones). The controller we analyze is originally described in the article Boyer, 1990[^1] by Boyer, Green, and Moore. This example is also formalized using the [Imandra system](https://docs.imandra.ai/imandra-docs/notebooks/simple-vehicle-controller/), and this document reproduces the same results in the more lean modeling language. 
+In this article, we’ll illustrate how knowledge‑representation systems built on first‑order logic can tackle practical challenges. As a concrete example, we’ll model a simple autonomous‑vehicle controller that dynamically compensates for wind variations while staying firmly on course. This kind of controller one can usually find in autonomous pilot systems (E.g. drones). The controller we analyze is originally described in the article Boyer, 1990[^1] by Boyer, Green, and Moore. This example is also formalized using the [Imandra system](https://docs.imandra.ai/imandra-docs/notebooks/simple-vehicle-controller/), and here we reproduce the same results in the more lean modeling language. 
 
 [^1]: Boyer, R. S. (1990). The use of a formal simulator to verify a simple real time control program. In Beauty Is Our Business. Springer.
 
-The primary goal of this document is to show how to model a simple autonomous vehicle controller and then prove some major safety properties about it using the good old language of first-order logic. On our way there, we first explain the simple vehicle controller and safety properties about it. After that, we provide a short overview of the <a href="#idp_system">IDP</a> knowledge base system (based on first-order logic). Finally, we explain how this system can be used to prove properties about vehicle controller. We close this discussion with a short conclusion.
+The primary goal of this post is to show how to model a simple autonomous vehicle controller and then prove some major safety properties about it using the good old language of first-order logic. On our way there, we first explain the simple vehicle controller and safety properties about it. After that, we provide a short overview of the <a href="#idp_system">IDP</a> knowledge base system (based on first-order logic). Finally, we explain how this system can be used to prove properties about vehicle controller. We close this discussion with a short conclusion.
 
 
 ### Simple vehicle controller
