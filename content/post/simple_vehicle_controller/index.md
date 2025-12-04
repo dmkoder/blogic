@@ -19,6 +19,7 @@ In this article, we’ll illustrate how knowledge‑representation systems built
 
 The primary goal of this post is to show how to model a simple autonomous vehicle controller and then prove some major safety properties about it using the good old language of first-order logic. On our way there, we first explain the simple vehicle controller and safety properties about it. After that, we provide a short overview of the <a href="#idp_system">IDP</a> knowledge base system (based on first-order logic). Finally, we explain how this system can be used to prove properties about vehicle controller. We close this discussion with a short conclusion.
 
+## Introduction
 
 ### Simple vehicle controller
 
