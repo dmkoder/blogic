@@ -41,7 +41,7 @@ Many of the most fundamental objects in mathematics are defined constructively t
 >- $(x,y) \in T$ if $(x,y) \in E$;
 >- $(x,y) \in T$ if there exists a $z \in V$ such that $(x,z) \in T$ and $(z,y) \in T$.
 
-![A graph (blue) and its transitive closure (blue + red).](figures/transitive_closure.png)
+![Figure 2. A graph (green) and its transitive closure (green + orange).](figures/transitive_closure/transitive_closure.gif)
 
 >*Example.* The **satisfaction relation** $\models$ in propositional logic is a binary relation between structures $\mathcal{I}$ (seen as sets of propositional constants) and propositional formulas $\varphi$. It is defined as follows:
 >- $\mathcal{I} \models p$ if $p \in \mathcal{I}$;
@@ -100,7 +100,7 @@ The constructive kind of information behind inductive definitions is not only of
 \]
 > Here the variables $n$, $m$ and $p$ represent nodes of the graph, and $t$ represents a time point (interpreted as a natural number). The predicates should be read as follows: An atom of the form $\mathit{MakeActive}(n,m,t)$ expresses that the edge $(n,m)$ is activated at time point $t$. The value of this predicate is given. An atom of the form $\mathit{Active}(n,m,t+1)$ expresses that the edge $(n,m)$ is active at time point $t$, and an atom of the form $\mathit{ActivePath}(n,m,t)$ expresses that there is a path of active edges from node $n$ to node $m$ at time point $t$. The value of these predicates are determined by the value of $\mathit{MakeActive}$. Through variations, this abstract example can be converted into real-world examples, such as the creation of electric circuits that burn through once a short circuit has been formed, or the construction of towers that collapse after a threshold height/weight has been exceeded.
 
-![As soon as a path of active edges from a to b emerges, all edges become inactive again.](figures/temporal_graph.png)
+![Figure 3. As soon as a path of active edges from a to b emerges, all edges become inactive again.](figures/temporal_graph/temporal_graph.gif)
 
 >*Example.* Consider a system in which users may or may not have access to a certain file. A user has access if it is the owner $o$, or if it is granted access by a user with access, but not blocked by a user with access. This scenario can be modeled by an FO(ID) definition of a predicate $\mathit{Access}/1$, in terms of predicates $\mathit{Grants}/2$ and $\mathit{Blocks}/2$:
 >\[ \left\{ \begin{array}{l}
@@ -111,26 +111,26 @@ The constructive kind of information behind inductive definitions is not only of
 
 Already quite some proof systems have been developed for inductive definitions. However, **none of these proof systems cover inductive definitions as generally as FO(ID)**. Negation in a definition, if allowed at all, is only allowed in a *stratified* way. This means that one can assign a **level** $\ell(Q) \in \mathbb{N}$ to every predicate $Q$ in the definition such that for every definitional rule $\forall \bar{x}: P(\bar{t}) \leftarrow \varphi$ and any predicate $Q$ in $\varphi$, $\ell(P) \geq \ell(Q)$, and furthermore $\ell(P) > \ell(Q)$ if $Q$ appears negatively in $\varphi$. 
 
-Stratification excludes a lot of interesting and useful definitions. For example, the even number definition is not stratified, as there is no level $\ell(E) \in \mathbb{N}$ for $E$ such that $\ell(E) > \ell(E)$.\footnote{It is still possible to define the even numbers in the existing frameworks via a positive definition (i.e., without negation), for instance by replacing the second rule by $\forall x:E(x+2)\leftarrow E(x)$. However, this is not does not work for any non-stratified definition.} For the same reason, the definitions of the satisfaction relation, the active edges, and the access relation are not stratified and hence not allowed in the existing frameworks.
+Stratification excludes a lot of interesting and useful definitions. For example, the even number definition is not stratified, as there is no level $\ell(E) \in \mathbb{N}$ for $E$ such that $\ell(E) > \ell(E)$. Notice that it is still possible to define the even numbers in the existing frameworks via a positive definition (i.e., without negation), for instance by replacing the second rule by $\forall x:E(x+2)\leftarrow E(x)$. However, this is not does not work for any non-stratified definition. For the same reason, the definitions of the satisfaction relation, the active edges, and the access relation are not stratified and hence not allowed in the existing frameworks.
 
 The reason why the existing frameworks impose stratification on their definitions is because, if one is not careful, such uncontrolled negative dependencies may result in 'bad' definitions. For instance, the definition
 \[\left\{ \begin{array}{l}
         P \leftarrow \lnot P
     \end{array} \right\}
 \]
-cannot attribute a truth value (true or false) to $P$, as this truth value would contradict itself. The stratification condition guarantees that definitions are always ‘good’, in the sense that they always lead to well-constructed objects. Nevertheless, there are a lot of interesting non-stratified definitions that still lead to well-constructed objects. Furthermore, one may argue that even 'bad' definitions such as $\defin{ P \leftarrow \lnot P}$ are interesting in their own right, as they can be linked to **philosophical paradoxes**. In fact, this very definition can be seen as a formalisation of the well-known **liar paradox**, which is the sentence “This sentence is false”, by viewing $P$ as the truth value of the sentence. Our work fills a gap in the scientific literature by providing a **formal proof system that can reason about these general non-stratified definitions**. 
+cannot attribute a truth value (true or false) to $P$, as this truth value would contradict itself. The stratification condition guarantees that definitions are always ‘good’, in the sense that they always lead to well-constructed objects. Nevertheless, there are a lot of interesting non-stratified definitions that still lead to well-constructed objects. Furthermore, one may argue that even 'bad' definitions such as $\bigl\\{ P \leftarrow \lnot P \bigr\\}$ are interesting in their own right, as they can be linked to **philosophical paradoxes**. In fact, this very definition can be seen as a formalisation of the well-known **liar paradox**, which is the sentence “This sentence is false”, by viewing $P$ as the truth value of the sentence. Our work fills a gap in the scientific literature by providing a **formal proof system that can reason about these general non-stratified definitions**. 
 
-FO(ID) thus allows us to represent very **rich kinds of information** that range from mathematical structures to logical programs, complex dynamical systems and even philosophical paradoxes. Strikingly, it reveals connections between multiple scientific disciplines that appear unrelated at first sight. The sequent calculus that we introduced for FO(ID) enables us to produce **formal proofs** about **general inductive definitions** and the rich kinds of information that can be captured with them. 
+FO(ID) thus allows us to represent very **rich kinds of information** that range from mathematical structures to logic programs, complex dynamical systems and even philosophical paradoxes. Strikingly, it reveals connections between multiple scientific disciplines that appear unrelated at first sight. The sequent calculus that we introduced for FO(ID) enables us to produce **formal proofs** about **general inductive definitions** and the rich kinds of information that can be captured with them. 
 
-![Proofs provide absolute certainty and explainability for the correctness of theorems.](figures/proof_importance.png)
+![Figure 4. Proofs provide absolute certainty and explainability for the correctness of theorems.](figures/proof_importance.png)
 
 
-**Proofs** are very special objects, as they establish with **absolute certainty that a theorem is correct** and, moreover, they **explain in detail why the theorem is correct**. Formal proof systems serve as the basis of **proof assistants**, which are computer tools that can verify the correctness of proofs, and that can help humans in finding new proofs. On one side, these proof assistants are used by mathematicians to formalise their complicated pen-and-paper proofs and to check that they are in fact correct, or even to aid them in proving new theorems. On another side, proof assistants are used in the **formal verification** of software and hardware systems. 
+**Proofs** are very special objects, as they establish with **certainty that a theorem is correct** and, moreover, they **explain in detail why the theorem is correct**. Formal proof systems serve as the basis of **proof assistants**, which are computer tools that can verify the correctness of proofs, and that can help humans in finding new proofs. On one side, these proof assistants are used by mathematicians to formalise their complicated pen-and-paper proofs and to check that they are in fact correct, or even to aid them in proving new theorems. On another side, proof assistants are used in the **formal verification** of software and hardware systems. 
 
 Another use of proof systems lies in **proof logging**, which is a technique used in combinatorial solvers to produce, alongside the output to a given problem, a proof that this output is correct. The generated proof is then verified by a separate *proof checker*, after which the correctness of the produced output is guaranteed. The importance of proof logging grows with the progress in solver technology. This progress makes solvers more efficient, but also more complicated, which sometimes results in the production of faulty outputs. Our proof system can be used to implement proof logging as well as a proof checker for solvers that use (non-stratified) inductive definitions, such as [MinisatID](https://wms.cs.kuleuven.be/dtai/pages/software/minisatid).
 
 
-## How it's done?
+## How is it done?
 
 To obtain our proof system for general inductive definitions, we extended an existing proof system for inductive definitions by Brotherston and Simpson, based on the principle of **mathematical induction**. By mathematical induction, we mean a proof technique that is commonly taught in secondary school to prove theorems about the natural numbers. In it simplest form, mathematical induction for the natural numbers says the following: to prove that a certain property $P$ holds for every natural number $n$, it suffices to prove that the property holds for $0$ (the **base case**), and that if the property holds for a given number $x$, it also holds for $x+1$ (the **induction step**). In a formal proof system, this proof technique corresponds to the following **inference rule**:
 \[
@@ -143,12 +143,12 @@ To obtain our proof system for general inductive definitions, we extended an exi
 \]
 The formulas above the line are called the **premises**, and the formula below the line is called the **conclusion** of the rule. The inference rule says that if the base case and the induction step for $P$ (the premises) hold, then any natural number $n$ has property $P$ (the conclusion). Note that the premises of this inference rule are similar to the rules in the definition of the natural number predicate $N$ above. This is no coincidence. An alternative way of interpreting the natural number definition is by seeing $N$ as the **smallest** set that satisfies its defining rules. The inference rule above can also be read as saying that if $P$ is a set that satisfies the defining rules of $N$, then $N$ must be a subset of $P$.
 
-![The principle of mathematical induction on the natural numbers can be visualized by a sequence of falling dominoes. If domino $0$ falls, and the fall of domino $n$ entails the fall of domino $n+1$, then all dominoes fall.](figures/math_induction.png)
+![Figure 5. The principle of mathematical induction on the natural numbers can be visualized by a sequence of falling dominoes. If domino 0 falls, and the fall of domino n entails the fall of domino n+1, then all dominoes fall.](figures/math_induction.png)
 
 
 Sometimes the above method does not suffice, as it may be necessary to **strengthen the induction hypothesis**. For example, the following result cannot be proven with the above method:
 
-> *Fact.* For every natural number $n$, the sum of the first $n$ odd numbers is a perfect square.\footnote{A *perfect square* is a number that is equal to the square $m^2$ of a natural number $m$.}
+> *Fact.* For every natural number $n$, the sum of the first $n$ odd numbers is a perfect square. (A *perfect square* is a number that is equal to the square $m^2$ of a natural number $m$.)
 
 We can, however, use the above method to prove the following **stronger** result:
 
@@ -193,10 +193,10 @@ Our solution to this problem is surprisingly easy. We simply replace the formula
 \]
 As a recapitulation, $O$ represents the inductively defined concept in this example, $P$ is a property to be proven about the inductively defined concept $O$, and $F$ is the induction hypothesis, a property that should imply $P$. This inference rule allows us to prove all kinds of properties of odd numbers, such as the fact that every odd number is the successor (or predecessor) of an even number, for example.
 
-Our solution may seem na\"ive, but we have shown that this proof technique is sound for general non-stratified definitions, and it appears strong enough to prove many theorems about non-stratified definitions.
+Our solution may seem naïve, but we have shown that this proof technique is sound for general non-stratified definitions, and it appears strong enough to prove many theorems about non-stratified definitions.
 
 
-## What next?
+## What is next?
 
 So far, we have only presented the proof system itself, applied it to a few examples of non-stratified definitions, and shown that it is sound. Soundness is a minimal property for a proof system to have, as it means that its inference rules can only derive true statements. A first direction for further research is therefore to **show extra theoretical properties that give further insight into the system**, e.g., in how powerful the system is. 
 
