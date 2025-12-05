@@ -11,7 +11,6 @@ tags:
     - Proofs
     - Inductive definitions
     - Sequent calculus
-hidden: true
 ---
 
 At the 17th International Conference on Logic Programming and Non-Monotonic Reasoning ([LPNMR 2024](https://lpnmr2024.demacs.unical.it/)), the paper titled [*A Sequent Calculus for Generalized Inductive Definitions*](https://link.springer.com/chapter/10.1007/978-3-031-74209-5_3) by Robbe Van den Eede, Robbe Van Biervliet, and Marc Denecker won the [Best Paper Award](https://ai.kuleuven.be/news/robbe-van-den-eede-wins-best-paper-award-at-lpnmr-2024). For [bLogic.ink](/), Robbe Van den Eede contributed an article that provides an accessible explanation of the paper.
@@ -141,7 +140,7 @@ To obtain our proof system for general inductive definitions, we extended an exi
         N(n) \Rightarrow P(n)
     \end{array}
 \]
-The formulas above the line are called the **premises**, and the formula below the line is called the **conclusion** of the rule. The inference rule says that if the base case and the induction step for $P$ (the premises) hold, then any natural number $n$ has property $P$ (the conclusion). Note that the premises of this inference rule are similar to the rules in the definition of the natural number predicate $N$ above. This is no coincidence. An alternative way of interpreting the natural number definition is by seeing $N$ as the **smallest** set that satisfies its defining rules. The inference rule above can also be read as saying that if $P$ is a set that satisfies the defining rules of $N$, then $N$ must be a subset of $P$.
+The formulas above the line are called the **premises**, and the formula below the line is called the **conclusion** of the rule. The inference rule says that if the base case and the induction step for $P$ (the premises) hold, then any natural number $n$ has property $P$ (the conclusion). Note that the premises of this inference rule are similar to the rules in the definition of the natural number predicate $N$ above. This is no coincidence. An alternative way of interpreting the natural number definition is by seeing $N$ as the **smallest** set that satisfies its defining rules. The inference rule above can also be read as saying that if $P$ is a set that satisfies the defining rules of $N$, then $N$ must be a subset of $P.$
 
 ![Figure 5. The principle of mathematical induction on the natural numbers can be visualized by a sequence of falling dominoes. If domino 0 falls, and the fall of domino n entails the fall of domino n+1, then all dominoes fall.](figures/math_induction.png)
 
@@ -206,4 +205,4 @@ Third, we can **extend the obtained proof system to a more powerful system** tha
 
 Finally, our sequent calculus can be used as the basis of a **proof assistant** that can aid humans in proving theorems about general inductive definitions, and it can be used to extend combinatorial solvers that use inductive definitions such as MinisatID with **proof logging** algorithms.
 
-In conclusion, even though there are still multiple interesting research tasks, we have at least **established a promising framework for doing formal proofs about general inductive definitions**.
+In conclusion, we have **established a promising framework for doing formal proofs about general inductive definitions**, providing certainty and explainability for complex forms of knowledge.
