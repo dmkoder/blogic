@@ -1,5 +1,5 @@
 {{/* Load assets if indgist is used in the page */}}
-{{ if .Page.Scratch.Get "idpGistUsed" }}
+{{ if .Page.Store.Get "idpGistUsed" }}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 
