@@ -1,25 +1,23 @@
-{{/* Mark that this shortcode was used */}}
-
 <p class="idp-code-header">
     <span class="filename">
-        {{ index .Params 3 }}
+        {{ index .Params 5 }}
     </span>
 </p>
+
 <div class="idp-code-wrapper" style="position:relative;">
-  {{if len .Params | eq 6 }}
-    <a class="idp-run-button" href="{{ index .Params 5 }}" title="Open this snippet" target="_blank" rel="noopener">
+  {{if len .Params | eq 8 }}
+    <a class="idp-run-button" href="{{ index .Params 7 }}" title="Open this snippet" target="_blank" rel="noopener">
       {{ ":rocket:" | $.Page.RenderString }}
       <span class="idp-run-button-text">&nbsp; Try Online!</span>
     </a>
   {{end}}
-  <pre class="idp-code-body"><code class="idp3" id='{{ replace (index .Params 3) " " "_" }}'></code></pre>
+  <pre class="idp-code-body"><code class="{{ index .Params 0 }}" id='{{ replace (index .Params 5) " " "_" }}'></code></pre>
 </div>
 
-<p class="idp-code-footer"><b>Author:</b> <i>{{ index .Params 4 }}</i></p>
-
+<p class="idp-code-footer"><b>Author:</b> <i>{{ index .Params 6 }}</i></p>
 
 <script>
-  fetchCode("{{ index .Params 0 }}", "{{ index .Params 1 }}", "{{ index .Params 2 }}", "{{ index .Params 3 }}");
+  fetchCode("{{ index .Params 1 }}", "{{ index .Params 2 }}", "{{ index .Params 3 }}", "{{ index .Params 4 }}", "{{ index .Params 5 }}");
 </script>
 
 

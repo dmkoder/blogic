@@ -1,6 +1,4 @@
-
-
-hljs.registerLanguage('idp3', function() {
+hljs.registerLanguage('idp', function() {
     return {
         case_insensitive: true, // language is case-insensitive
         keywords: 'LTCvocabulary vocabulary theory structure factlist procedure include pretty_print printmodels print tonumber io\. read',
@@ -36,10 +34,15 @@ hljs.registerLanguage('idp3', function() {
     }
 });
 
-async function fetchCode(userId, gistId, filePath, fileName) {
+async function fetchCode(type, userId, repoId, filePath, fileName) {
     try {
-        const url = `https://gist.githubusercontent.com/${userId}/${gistId}/raw/${filePath}/${fileName}`;
-        
+        var url = ""
+        if (type === "gist") {
+            url = `https://gist.githubusercontent.com/${userId}/${repoId}/raw/${filePath}/${fileName}`;
+        } else {
+            url = `https://raw.githubusercontent.com/${userId}/${repoId}/refs/heads/main/${filePath}/${fileName}`;
+        }
+
         const response = await fetch(url, { cache: "no-store" });
         const code = await response.text();
 
