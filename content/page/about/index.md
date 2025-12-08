@@ -35,8 +35,14 @@ To enrich the conversation, this blog will feature interviews with leading schol
 
 - This blog is hosted using [GitHub Pages](https://docs.github.com/en/pages) and discussions are provided using [Giscus](https://giscus.app/). 
 
+- This blog usees [GoatCounter](https://www.goatcounter.com/') privacy-friendly open-source analytics tool.
+
+# A Note on Privacy
+
+We do not use cookies. We do use [GoatCounter](https://www.goatcounter.com/'), a privacy-friendly open-source analytics tool, to understand which posts are getting attention. If you’re using an ad blocker, please consider disabling it for this site—otherwise the counter might not register your visit.
+
 # Contact
 
-[contact@blogic.ink](mailto:contact@blogic.ink)
+Got a question or thought? We’d love to hear from you. Contact us at [contact@blogic.ink](mailto:contact@blogic.ink).
 
 
