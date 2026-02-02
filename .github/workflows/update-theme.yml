@@ -25,7 +25,6 @@ jobs:
         with:
           hugo-version: 0.152.2
           extended: true
-          cache: false
 
       - name: Update theme
         run: hugo mod get -u github.com/CaiJimmy/hugo-theme-stack/v3
