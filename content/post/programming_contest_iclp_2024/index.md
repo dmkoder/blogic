@@ -2,7 +2,7 @@
 title: Programming Contest - International Conference on Logic Programming (2024)
 description: Đorđe Marković
 slug: programming_contest_iclp_2024
-date: 2025-10-29 00:00:00+0000
+date: 2026-01-10 00:00:00+0000
 math: true
 image: undraw_competition.svg
 categories:
@@ -11,19 +11,20 @@ tags:
     - Logic programming
     - Competition
     - Code
-hidden: true
 ---
 
 
-## Introduction</h2>
+## Introduction
 
 This post aims to present, analyze, and solve the four challenges from the programming contest held at the International Conference on Logic Programming (2024).
 Short specifications of the problems are elaborated on and accompanied by graphical visualizations for better understanding.
-For solving the challenges IDP3 system[^1] is used (for technical details consult the IDP manual[^2]).
+The solutions of the challenges will be presented in two formalisms: [IDP](https://dtai.cs.kuleuven.be/pages/software/idp) (scientific paper[^1], technical manual[^2]), and [Answer Set Programming (ASP)](https://en.wikipedia.org/wiki/Answer_set_programming) (scientific paper[^3], [documnetaiotn page](https://potassco.org/doc/)).
 
-[^1]: De Cat, B. a. (2018). Predicate logic as a modeling language: the IDP system. In Declarative Logic Programming: Theory, Systems, and Applications (pp. 273--323).
+[^1]: De Cat, B., Bogaerts B., Bruynooghe M., Janssens G., Denecker M. (2018). Predicate logic as a modeling language: the IDP system. In Declarative Logic Programming: Theory, Systems, and Applications (pp. 273--323).
 
 [^2]: KU Leuven Knowledge Representation and Reasoning research group (2020), [The IDP framework reference manual](https://dtai.cs.kuleuven.be/krr/files/bib/manuals/idp3-manual.pdf).
+
+[^3]: Eiter T., Ianni G., Krennwallner T. (2009). Answer set programming: A primer. In Lecture Notes in Computer Science (pp. 40--110). 
 
 ### About the contest
 
@@ -49,6 +50,8 @@ However, the main law in this example is the law of the behavior of different lo
 The following illustration depicts the different logical gates and how they map their input variables to the output in terms of logical operations (block one), and provides a tabular definition for each of the logical operations (block two).
 
 ![Figure 2.](figures/fig2.svg)
+
+Notice that for the logical OR gate, if any of the input values is 1, the result is 1, and similarly for the AND gate, if any of the input values is 0, the result is 0. These are called absorbing values and will be important for the ASP encoding.
 
 Taking everything into account, the idea is to declaratively define (formally specify) the behavior of each of the gates by refining their output in terms of the input variables.
 Additionally, this definition should support multiple entries. 
@@ -102,6 +105,17 @@ Gates-to-truth.idp `Đorđe Marković` `https://idp.cs.kuleuven.be/idp/?example=
 
 #### ASP solution
 
+The idea behind the ASP solution is similar to the one presented above. 
+
+The first two rules serve only to populate the unary predicate gate using the given information about unary and binary. 
+
+Binary predicate $\mathit{function}$ represents the functionality of a gate.
+The first rule expresses that it can be chosen arbitrarily to be 0; this is expressed with the choice rule (one with the `{function(G,0)}` in the head). The second rule expresses that the function of a gate is 1 if it is not 0. In this way, the binary predicate function is actually functional (has at most one value per gate). The choice rule opens the predicate and allows the function to take an arbitrary assignment. 
+
+Predicate $\mathit{propagate}$ captures the propagation of values through the circuit per iteration. 
+The first rule simply copies the values given for the input variables. 
+The second rule captures the unary gates, inverting their value if needed. This is captured by the absolute value of an input value subtracted by the value of the gate. Since the identity gate is 0, it will make no difference, and the negation gate will reduce the value by 1, which, combined with the absolute value, indeed inverts the input value. Because the AND gate is represented by 0 and the OR gate by 1, the third propagation rule derives that the output of any gate takes the value of the gate itself if one of its inputs has that value. This rule exploits the absorbing elements of Boolean algebra: if one of the inputs to the AND gate is false, regardless of the other input, the output is false; similarly, for the OR gate, if one of the inputs is true, the output is true. The last rule covers the last case for the binary gates; if both inputs of a gate have the same value, then that value is the output for the corresponding gate. This is 0 for the OR gate, 1 for the AND gate.
+
 {{< idpgist prolog repo dmkoder iclp-cp-2024 problem-1 Gates-to-truth.lp `Martin Gebser`>}}
 
 ### Challenge 2: Tile them all
@@ -123,7 +137,7 @@ The format of the input for this problem is the Prolog stile fact list specifyin
 - \(cell/3\) - set of values per cell, where cell is specified as X and Y 
 
 The expected resul (pairs of cells) is represented with two binary functions \(pairx/2:\) and \(pairy/2:\) mapping cells to X and Y coordinate respectevly. 
-Intuitevly, given cell \((X,Y)\) its pair is represented as \((pairx(X,Y), pairy(X,Y))\).   
+Intuitevly, given cell \((X,Y)\) its pair is represented as \((pairx(X,Y), pairy(X,Y))\).
 
 Following is the code containing the full solution of the problem.
 The solution contains axioms that are explained with comments. 
@@ -133,6 +147,8 @@ It is possible to run the code in the online editor by clicking "Try in online e
 Tile-them-all.idp `Bart Bogaerts` `https://idp.cs.kuleuven.be/idp/?example=scienceweek/iclp-cp-2024/problem-2/Tile-them-all-webide` >}}
 
 #### ASP solution
+
+The ASP solution is conceptually similar to the IDP solution presented above. The main difference is that ASP needs a choice rule to open the tile predicate for different possibilities, while this is implicit in the semantics of IDP. The code below is the ASP solution, and the lines are explained with comments.
 
 {{< idpgist prolog repo dmkoder iclp-cp-2024 problem-2 Tile-them-all.lp `Martin Gebser`>}}
 
@@ -186,7 +202,7 @@ Problem description from the assignment:
 
 
 The following figure is presenting an input table (top left) with it components reward (top right) and cost (bottom left) scores. 
-The same figure provides an example of a non-empty cycle (bottom right), the arrows are there to help us ilustrate how such a cycle can be defined.    
+The same figure provides an example of a non-empty cycle (bottom right), the arrows are there to help us ilustrate how such a cycle can be defined.
 
 ![Figure 5.](figures/fig5.svg)
 
@@ -229,18 +245,22 @@ Fence-for-fans.idp `Đorđe Marković` `https://idp.cs.kuleuven.be/idp/?example=
 
 #### ASP solution
 
+The following is the ASP solution, explained with inline comments.
+
 {{< idpgist prolog repo dmkoder iclp-cp-2024 problem-4 Fence-for-fans.lp `Martin Gebser`>}}
 
 
 ## Conclusion
 
-The IDP3 system proved to be suitable for modeling and solving problems from the 2024 ICLP Programming Contest.
-To conclude this story, we point to two important observations.
+Through the years, the ICLP Programming Contest was dominated by ASP and Prolog formalisms for solving the problems. In this post, we presented how these problems can be solved with the IDP3 system. We also provided ASP solutions for comparison and diversity. 
+
+We conclude that the IDP3 system proved to be suitable for modeling and solving problems from the 2024 ICLP Programming Contest. In the end, we point to two important observations.
 First, IDP3 provides a natural way to model domains independently of the specific problem. 
-A good example is the first challenge, where the defined concept is given as input and we search for parameters of the definition.
+A good example is the first challenge, where the defined concept is given as input, and we search for parameters of the definition.
 This power of the IDP3 system comes from the precise model semantics of the language, allowing clear and declarative specifications of the domain.
 Secondly, it is important to mention that the challenges were on the edge of the computational capacity of the IDP3 system.
 Hence, for some problems, finding the solution can take up to a few minutes (e.g., the last problem).
+On the other side, ASP is capable of solving these problems more efficiently.
 
 The source code for all examples is available in [this Git repository](https://github.com/dmkoder/iclp-cp-2024).
 
