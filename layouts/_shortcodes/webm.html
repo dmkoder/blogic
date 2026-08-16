@@ -1,11 +1,12 @@
-<div class="gallery">
-<video
-  autoplay
-  loop
-  muted
-  playsinline
-  width="100%"
->
-  <source src="{{ index .Params 0 }}" type="video/webm">
-</video>
-</div>
+<figure  class="gallery-image">
+  <video
+    autoplay
+    loop
+    muted
+    playsinline
+    width="100%"
+  >
+    <source src="{{ index .Params 0 }}" type="video/webm">
+  </video>
+  <figcaption>{{ index .Params 1 }}</figcaption>
+</figure>
