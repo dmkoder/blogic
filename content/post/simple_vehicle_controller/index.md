@@ -54,6 +54,8 @@ Modeling a controller is one problem, but verifying its properties is a totally 
   
 ***Theorem*** [Constant wind] *If the wind ever becomes constant for at least four sampling intervals, then the vehicle returns to the zero point on the y-axis and stays there as long the wind remains constant.*
 
+{{< webm `animations/balancing_drone/balancing_drone.webm` >}}
+
 In general, it is difficult to automatically prove such theorems, and we later transform these theorems into simpler statements by performing certain transformations. The resulting new simpler statements we call invariants. We use this name to indicate that some property is not changing over time (I.e., always holds).
 
 ### IDP system

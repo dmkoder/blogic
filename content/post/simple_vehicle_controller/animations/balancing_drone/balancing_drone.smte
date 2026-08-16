@@ -1,0 +1,24 @@
+set_frame_size 1000 154
+
+place coordinates 0 0
+place clock 0 0
+place wind 0 50
+place drone 450 30
+
+place_div clock_counter 50 0 40 40 1 '0'
+addstyle clock_counter font-size:32px;color:#fec656;font-family:'OpenSans'
+schedule_eval update_clock 1000 set('clock_counter', +get('clock_counter')+1)
+
+place_div wind_counter 50 50 40 40 1 '0'
+addstyle wind_counter font-size:32px;color:#1e61ae;font-family:'OpenSans'
+schedule_eval update_wind 1000 if (+get('wind_counter') < 3) { set('wind_counter', +get('wind_counter')+1)}
+
+animate_1000 move easeinout drone 550 - && rotate drone -25
+animate_1000 move easeinout drone 450 - && rotate drone 0
+animate_1000 move easeinout drone 650 - && rotate drone -25
+animate_1000 move easeinout drone 550 - && rotate drone 0
+animate_1000 move easeinout drone 350 - && rotate drone 25
+animate_1000 move easeinout drone 650 - && rotate drone -25
+animate_1000 move easeinout drone 450 - && rotate drone 0
+animate_1500 pause
+
