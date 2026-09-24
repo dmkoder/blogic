@@ -4,7 +4,7 @@ links:
   - title: Marković Đorđe
     description: The founder of bLogic.ink.
     website: https://djordje.rs
-    image: https://djordje.rs/static/avatar/djordje.jpg
+    image: https://djordje.rs/static/avatar/djordje.jpeg
 menu:
     main: 
         weight: 2
